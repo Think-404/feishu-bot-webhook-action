@@ -38,7 +38,8 @@ export async function PostGithubEvent(): Promise<number | undefined> {
     context.payload.pull_request?.html_url ||
     ''
   //增加获取body
-  let body=context.payload.issue?.body ||
+  let body=
+      context.payload.issue?.body ||
       context.payload.pull_request?.body ||
       ''
   let detailurl = ''
@@ -179,8 +180,9 @@ export async function PostGithubEvent(): Promise<number | undefined> {
     color,
     actor,
     status,
-    etitle,
-    body
+    // etitle,
+    body,
+    detailurl
   )
   return PostToFeishu(webhookId, cardmsg)
 }
