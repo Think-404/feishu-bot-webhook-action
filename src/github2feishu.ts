@@ -29,7 +29,8 @@ export async function PostGithubEvent(): Promise<number | undefined> {
   const tm = Math.floor(Date.now() / 1000)
   const sign = sign_with_timestamp(tm, signKey)
 
-  const actor = context.actor
+  // const actor = context.actor
+  const actor='????'
   const eventType = context.eventName
   const repo = context.payload.repository?.name || 'junka'
   let status = context.payload.action || 'closed'
