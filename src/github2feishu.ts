@@ -37,6 +37,10 @@ export async function PostGithubEvent(): Promise<number | undefined> {
     context.payload.issue?.html_url ||
     context.payload.pull_request?.html_url ||
     ''
+  //增加获取body
+  let body=context.payload.issue?.body ||
+      context.payload.pull_request?.body ||
+      ''
   let detailurl = ''
   switch (eventType) {
     case 'branch_protection_rule': {
@@ -176,7 +180,7 @@ export async function PostGithubEvent(): Promise<number | undefined> {
     actor,
     status,
     etitle,
-    detailurl
+    body
   )
   return PostToFeishu(webhookId, cardmsg)
 }
