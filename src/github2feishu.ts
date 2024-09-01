@@ -176,12 +176,12 @@ export async function PostGithubEvent(): Promise<number | undefined> {
     tm,
     sign,
     repo,
-    eventType,
+    // eventType,
+    body,
     color,
     actor,
     status,
-    // etitle,
-    body,
+    etitle,
     detailurl
   )
   return PostToFeishu(webhookId, cardmsg)
