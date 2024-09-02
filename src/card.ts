@@ -67,7 +67,7 @@ export function BuildGithubNotificationCard(
       }
     }
   }
-  core.debug("card data", JSON.stringify(ncard))
+  core.info(JSON.stringify(ncard))
   return JSON.stringify(ncard)
 }
 
