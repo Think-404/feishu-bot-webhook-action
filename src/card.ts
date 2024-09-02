@@ -1,4 +1,5 @@
 import { Repository } from './trend'
+import * as core from '@actions/core'
 
 type NotificationCard = {
   repo: string
@@ -66,7 +67,7 @@ export function BuildGithubNotificationCard(
       }
     }
   }
-  console.log("card data", JSON.stringify(ncard))
+  core.debug("card data", JSON.stringify(ncard))
   return JSON.stringify(ncard)
 }
 
