@@ -23,7 +23,7 @@ export async function PostGithubEvent(): Promise<number | undefined> {
     : process.env.FEISHU_BOT_SIGNKEY || ''
 
   const payload = context.payload || {}
-  console.log(payload)
+  console.log("payload", payload)
 
   const webhookId = webhook.slice(webhook.indexOf('hook/') + 5)
   const tm = Math.floor(Date.now() / 1000)
