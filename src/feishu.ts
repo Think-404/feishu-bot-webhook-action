@@ -12,6 +12,7 @@ export async function PostToFeishu(
   id: string,
   content: string
 ): Promise<number | undefined> {
+  process.stdout.write(content)
   console.log("content", content);
   return new Promise((resolve, reject) => {
     const options = {
