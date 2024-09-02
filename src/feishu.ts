@@ -12,6 +12,7 @@ export async function PostToFeishu(
   id: string,
   content: string
 ): Promise<number | undefined> {
+  console.log("content", content);
   return new Promise((resolve, reject) => {
     const options = {
       hostname: 'open.feishu.cn',
