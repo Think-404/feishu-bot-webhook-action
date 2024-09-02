@@ -57,15 +57,16 @@ export function BuildGithubNotificationCard(
           repo,
           eventType,
           themeColor: color,
-          auser: user,
+          auser: "xxc",
           avatar: 'img_v2_9dd98485-2900-4d65-ada9-e31d1408dcfg',
           status,
-          etitle,
+          etitle: "etitle",
           detailurl
         }
       }
     }
   }
+  console.log("card data", JSON.stringify(ncard))
   return JSON.stringify(ncard)
 }
 
