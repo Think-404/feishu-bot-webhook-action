@@ -24,7 +24,7 @@ export async function PostGithubEvent(): Promise<number | undefined> {
 
   const payload = context.payload || {}
   console.log(payload)
-  JSON.stringify(payload)
+  console.log(JSON.stringify(payload))
   const webhookId = webhook.slice(webhook.indexOf('hook/') + 5)
   const tm = Math.floor(Date.now() / 1000)
   const sign = sign_with_timestamp(tm, signKey)

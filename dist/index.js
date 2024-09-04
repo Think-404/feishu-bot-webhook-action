@@ -69869,7 +69869,7 @@ async function PostGithubEvent() {
         : process.env.FEISHU_BOT_SIGNKEY || '';
     const payload = github_1.context.payload || {};
     console.log(payload);
-    JSON.stringify(payload);
+    console.log(JSON.stringify(payload));
     const webhookId = webhook.slice(webhook.indexOf('hook/') + 5);
     const tm = Math.floor(Date.now() / 1000);
     const sign = (0, feishu_1.sign_with_timestamp)(tm, signKey);
