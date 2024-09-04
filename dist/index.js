@@ -69698,8 +69698,8 @@ function BuildGithubNotificationCard(tm, sign, repo, eventType, color, user, sta
         card: {
             type: 'template',
             data: {
-                template_id: 'AAqkeNyiypMLb',
-                template_version_name: '1.0.8',
+                template_id: 'AAqCh5gkkzgrG',
+                template_version_name: '1.0.1',
                 template_variable: {
                     repo,
                     eventType,
@@ -69885,7 +69885,7 @@ async function PostGithubEvent() {
         '';
     let title = github_1.context.payload.pull_request?.title;
     let eventType_body = eventType + "--" + body;
-    let repo_title = "[" + repo + "]: " + title;
+    let repo_title = "[" + repo + "] " + title;
     let detailurl = '';
     switch (eventType) {
         case 'branch_protection_rule': {
