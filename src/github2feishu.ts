@@ -40,7 +40,7 @@ export async function PostGithubEvent(): Promise<number | undefined> {
   let body= context.payload.issue?.body ||
       context.payload.pull_request?.body ||
       ''
-  let title= context.payload.title;
+  let title= context.payload.pull_request?.title;
   let eventType_body: string = eventType + " " + body;
   let repo_title: string = repo + " " + title;
   let detailurl = ''

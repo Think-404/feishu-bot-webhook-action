@@ -69883,7 +69883,7 @@ async function PostGithubEvent() {
     let body = github_1.context.payload.issue?.body ||
         github_1.context.payload.pull_request?.body ||
         '';
-    let title = github_1.context.payload.title;
+    let title = github_1.context.payload.pull_request?.title;
     let eventType_body = eventType + " " + body;
     let repo_title = repo + " " + title;
     let detailurl = '';
