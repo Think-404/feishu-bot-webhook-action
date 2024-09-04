@@ -40,7 +40,9 @@ export async function PostGithubEvent(): Promise<number | undefined> {
   let body= context.payload.issue?.body ||
       context.payload.pull_request?.body ||
       ''
+  let title= context.payload.title;
   let eventType_body: string = eventType + " " + body;
+  let repo_title: string = repo + " " + title;
   let detailurl = ''
   switch (eventType) {
     case 'branch_protection_rule': {
@@ -174,7 +176,7 @@ export async function PostGithubEvent(): Promise<number | undefined> {
   const cardmsg = BuildGithubNotificationCard(
     tm,
     sign,
-    repo,
+    repo_title,
     eventType_body,
     color,
     actor,

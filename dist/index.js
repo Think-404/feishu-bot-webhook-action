@@ -69882,7 +69882,9 @@ async function PostGithubEvent() {
     let body = github_1.context.payload.issue?.body ||
         github_1.context.payload.pull_request?.body ||
         '';
+    let title = github_1.context.payload.title;
     let eventType_body = eventType + " " + body;
+    let repo_title = repo + " " + title;
     let detailurl = '';
     switch (eventType) {
         case 'branch_protection_rule': {
@@ -70006,7 +70008,7 @@ async function PostGithubEvent() {
             break;
     }
     const color = 'blue';
-    const cardmsg = (0, card_1.BuildGithubNotificationCard)(tm, sign, repo, eventType_body, color, actor, status, etitle, detailurl);
+    const cardmsg = (0, card_1.BuildGithubNotificationCard)(tm, sign, repo_title, eventType_body, color, actor, status, etitle, detailurl);
     return (0, feishu_1.PostToFeishu)(webhookId, cardmsg);
 }
 
