@@ -37,6 +37,10 @@ export async function PostGithubEvent(): Promise<number | undefined> {
     context.payload.issue?.html_url ||
     context.payload.pull_request?.html_url ||
     ''
+  let body= context.payload.issue?.body ||
+      context.payload.pull_request?.body ||
+      ''
+  let eventType_body: string = eventType + " " + body;
   let detailurl = ''
   switch (eventType) {
     case 'branch_protection_rule': {
@@ -171,7 +175,7 @@ export async function PostGithubEvent(): Promise<number | undefined> {
     tm,
     sign,
     repo,
-    eventType,
+    eventType_body,
     color,
     actor,
     status,
