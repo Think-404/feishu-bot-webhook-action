@@ -37,7 +37,9 @@ export function BuildGithubNotificationCard(
   tm: number,
   sign: string,
   repo: string,
+  title: string,
   eventType: string,
+  body: string,
   color: string,
   user: string,
   status: string,
@@ -52,13 +54,13 @@ export function BuildGithubNotificationCard(
       type: 'template',
       data: {
         template_id: 'AAqCh5gkkzgrG',
-        template_version_name: '1.0.1',
+        template_version_name: '1.0.3',
         template_variable: {
           repo,
           eventType,
-          themeColor: color,
+          themeColor: title,
           auser: user,
-          avatar: 'img_v2_9dd98485-2900-4d65-ada9-e31d1408dcfg',
+          avatar: body,
           status,
           etitle,
           detailurl

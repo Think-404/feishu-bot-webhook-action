@@ -15,6 +15,7 @@ async function PostGithubTrending(
 }
 
 export async function PostGithubEvent(): Promise<number | undefined> {
+  //从github读入飞书webhook
   const webhook = core.getInput('webhook')
     ? core.getInput('webhook')
     : process.env.FEISHU_BOT_WEBHOOK || ''
@@ -24,7 +25,7 @@ export async function PostGithubEvent(): Promise<number | undefined> {
 
   const payload = context.payload || {}
   console.log(payload)
-  console.log(JSON.stringify(payload))
+  // console.log(JSON.stringify(payload))
   const webhookId = webhook.slice(webhook.indexOf('hook/') + 5)
   const tm = Math.floor(Date.now() / 1000)
   const sign = sign_with_timestamp(tm, signKey)
@@ -176,8 +177,10 @@ export async function PostGithubEvent(): Promise<number | undefined> {
   const cardmsg = BuildGithubNotificationCard(
     tm,
     sign,
-    repo_title,
-    eventType_body,
+    repo,
+    title,
+    eventType,
+    body,
     color,
     actor,
     status,

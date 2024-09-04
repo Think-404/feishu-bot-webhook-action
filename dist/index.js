@@ -69690,7 +69690,7 @@ function wrappy (fn, cb) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.BuildGithubNotificationCard = BuildGithubNotificationCard;
 exports.BuildGithubTrendingCard = BuildGithubTrendingCard;
-function BuildGithubNotificationCard(tm, sign, repo, eventType, color, user, status, etitle, detailurl) {
+function BuildGithubNotificationCard(tm, sign, repo, title, eventType, body, color, user, status, etitle, detailurl) {
     const ncard = {
         timestamp: `${tm}`,
         sign,
@@ -69699,13 +69699,13 @@ function BuildGithubNotificationCard(tm, sign, repo, eventType, color, user, sta
             type: 'template',
             data: {
                 template_id: 'AAqCh5gkkzgrG',
-                template_version_name: '1.0.1',
+                template_version_name: '1.0.3',
                 template_variable: {
                     repo,
                     eventType,
-                    themeColor: color,
+                    themeColor: title,
                     auser: user,
-                    avatar: 'img_v2_9dd98485-2900-4d65-ada9-e31d1408dcfg',
+                    avatar: body,
                     status,
                     etitle,
                     detailurl
@@ -69869,7 +69869,6 @@ async function PostGithubEvent() {
         : process.env.FEISHU_BOT_SIGNKEY || '';
     const payload = github_1.context.payload || {};
     console.log(payload);
-    console.log(JSON.stringify(payload));
     const webhookId = webhook.slice(webhook.indexOf('hook/') + 5);
     const tm = Math.floor(Date.now() / 1000);
     const sign = (0, feishu_1.sign_with_timestamp)(tm, signKey);
@@ -70009,7 +70008,7 @@ async function PostGithubEvent() {
             break;
     }
     const color = 'blue';
-    const cardmsg = (0, card_1.BuildGithubNotificationCard)(tm, sign, repo_title, eventType_body, color, actor, status, etitle, detailurl);
+    const cardmsg = (0, card_1.BuildGithubNotificationCard)(tm, sign, repo, title, eventType, body, color, actor, status, etitle, detailurl);
     return (0, feishu_1.PostToFeishu)(webhookId, cardmsg);
 }
 
