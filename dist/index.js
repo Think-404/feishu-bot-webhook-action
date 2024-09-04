@@ -69884,8 +69884,8 @@ async function PostGithubEvent() {
         github_1.context.payload.pull_request?.body ||
         '';
     let title = github_1.context.payload.pull_request?.title;
-    let eventType_body = eventType + " " + body;
-    let repo_title = repo + " " + title;
+    let eventType_body = eventType + "--" + body;
+    let repo_title = "[" + repo + "]: " + title;
     let detailurl = '';
     switch (eventType) {
         case 'branch_protection_rule': {
